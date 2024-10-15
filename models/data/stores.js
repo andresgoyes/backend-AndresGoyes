@@ -30,7 +30,6 @@ let stores = [
     }
 ];
 
-// Verificar que los datos están correctamente formateados
 console.log(stores);
 
 Store.insertMany(stores)

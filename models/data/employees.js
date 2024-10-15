@@ -80,7 +80,6 @@ let employees = [
     }
 ];
 
-// Verificar que los datos están correctamente formateados
 console.log(employees);
 
 Employee.insertMany(employees)

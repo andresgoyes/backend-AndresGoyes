@@ -1,6 +1,5 @@
 import Employee from "../../models/Employee.js";
 
-// Ver todos los empleados
 let allEmployees = async (req, res) => {
     try {
         let all = await Employee.find();
@@ -14,8 +13,6 @@ let allEmployees = async (req, res) => {
     }
 };
 
-
-// Ver empleado según su nombre
 let employeeByName = async (req, res) => {
     try {
         let nameQuery = req.params.name;
@@ -32,7 +29,6 @@ let employeeByName = async (req, res) => {
     }
 };
 
-// Ver empleados según su cargo (posición)
 let employeeByPosition = async (req, res) => {
     try {
         console.log(req.params);
@@ -50,7 +46,6 @@ let employeeByPosition = async (req, res) => {
     }
 };
 
-// Ver empleados según su salario (mayor o igual al valor dado)
 let employeeBySalary = async (req, res) => {
     try {
         let salaryQuery = req.params.salary;

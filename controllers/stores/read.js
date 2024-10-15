@@ -1,6 +1,5 @@
 import Store from "../../models/Store.js";
 
-// Ver todas las tiendas
 let allStores = async (req, res) => {
     try {
         let stores = await Store.find();
@@ -14,7 +13,6 @@ let allStores = async (req, res) => {
     }
 };
 
-// Ver una tienda según su dirección
 let storeByAddress = async (req, res) => {
     try {
         let addressQuery = req.params.address;
@@ -35,7 +33,6 @@ let storeByAddress = async (req, res) => {
     }
 };
 
-// Ver una tienda según su nombre
 let storeByName = async (req, res) => {
     try {
         let nameQuery = req.params.name;

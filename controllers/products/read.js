@@ -1,6 +1,5 @@
 import Product from "../../models/Product.js";
 
-// Ver todos los productos
 let allProducts = async (req, res) => {
     try {
         let products = await Product.find();
@@ -14,7 +13,6 @@ let allProducts = async (req, res) => {
     }
 };
 
-// Ver un producto según su nombre
 let productByName = async (req, res) => {
     try {
         let nameQuery = req.params.name;
@@ -35,7 +33,6 @@ let productByName = async (req, res) => {
     }
 };
 
-// Ver un producto según su tipo
 let productByType = async (req, res) => {
     try {
         let typeQuery = req.params.type;
@@ -56,7 +53,6 @@ let productByType = async (req, res) => {
     }
 };
 
-// Ver productos según su precio
 let productsByPrice = async (req, res) => {
     try {
         let priceQuery = req.params.price;

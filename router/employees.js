@@ -3,9 +3,9 @@ import { allEmployees, employeeByName, employeeByPosition, employeeBySalary } fr
 
 const router = Router();
 
-router.get('/all', allEmployees); // Ver todos los empleados
-router.get('/name/:name', employeeByName); // Ver todos los empleados
-router.get('/position/:position', employeeByPosition); // Ver empleados por cargo/posición
-router.get('/salary/:salary', employeeBySalary); // Ver empleados con salario mayor o igual al valor dado
+router.get('/all', allEmployees); 
+router.get('/name/:name', employeeByName); 
+router.get('/position/:position', employeeByPosition);
+router.get('/salary/:salary', employeeBySalary); 
 
 export default router;

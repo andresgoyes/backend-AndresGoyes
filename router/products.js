@@ -3,9 +3,9 @@ import { allProducts, productByName, productByType, productsByPrice } from "../c
 
 const router = Router();
 
-router.get('/all', allProducts); // Ver todos los productos
-router.get('/name/:name', productByName); // Ver un producto por nombre
-router.get('/type/:type', productByType); // Ver productos por tipo
-router.get('/price/:price', productsByPrice); // Ver productos por precio
+router.get('/all', allProducts); 
+router.get('/name/:name', productByName); 
+router.get('/type/:type', productByType); 
+router.get('/price/:price', productsByPrice); 
 
 export default router;

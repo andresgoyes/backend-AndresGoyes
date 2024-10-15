@@ -57,7 +57,6 @@ let products = [
     { name: "Air Fryer", brand: "Ninja", type: "Appliances", price: 120 }
 ];
 
-// Verificar que los datos están correctamente formateados
 console.log(products);
 
 Product.insertMany(products)
