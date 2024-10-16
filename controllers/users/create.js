@@ -1,17 +1,35 @@
-import User from "../../models/User.js"
+import User from "../../models/User.js";
 
 let create = async (req, res) => {
     try {
         let user = req.body;
-        let all = await User.create(user);
+        let newUser = await User.create(user);
         return res.status(201).json({
-            response: all
+            response: newUser,
+            message: "Usuario creado exitosamente."
         });
     } catch (error) {
         return res.status(500).json({
-            response: error
+            response: error.message,
+            message: "Error al crear el usuario."
         });
     }
 };
 
-export default create
+let createMany = async (req, res) => {
+    try {
+        let users = req.body;
+        let allUsers = await User.insertMany(users);
+        return res.status(201).json({
+            response: allUsers,
+            message: "Usuarios creados exitosamente."
+        });
+    } catch (error) {
+        return res.status(500).json({
+            response: error.message,
+            message: "Error al crear los usuarios."
+        });
+    }
+};
+
+export { create, createMany };
