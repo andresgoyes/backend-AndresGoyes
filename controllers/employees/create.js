@@ -9,10 +9,7 @@ let create = async (req, res) => {
             message: "Empleado creado exitosamente."
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message,
-            message: "Error al crear el empleado."
-        });
+        next(error);
     }
 };
 
@@ -25,10 +22,7 @@ let createMany = async (req, res) => {
             message: "Employees creados exitosamente."
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message,
-            message: "Error al crear los Employees."
-        });
+        next(error);
     }
 };
 

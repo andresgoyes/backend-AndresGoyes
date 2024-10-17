@@ -7,9 +7,7 @@ let allStores = async (req, res) => {
             response: stores
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -27,9 +25,7 @@ let storeByAddress = async (req, res) => {
             });
         }
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -47,9 +43,7 @@ let storeByName = async (req, res) => {
             });
         }
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 

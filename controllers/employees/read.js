@@ -7,9 +7,7 @@ let allEmployees = async (req, res) => {
             response: all
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -23,9 +21,7 @@ let employeeByName = async (req, res) => {
             response: all
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -40,9 +36,7 @@ let employeeByPosition = async (req, res) => {
             response: all
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -56,9 +50,7 @@ let employeeBySalary = async (req, res) => {
             response: all
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 

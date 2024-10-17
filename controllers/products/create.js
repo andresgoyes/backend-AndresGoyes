@@ -9,10 +9,7 @@ let create = async (req, res) => {
             message: "Product creado exitosamente."
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message,
-            message: "Error al crear el product."
-        });
+        next(error);
     }
 };
 
@@ -25,10 +22,7 @@ let createMany = async (req, res) => {
             message: "Products creados exitosamente."
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message,
-            message: "Error al crear los Products."
-        });
+        next(error);
     }
 };
 

@@ -7,9 +7,7 @@ let allProducts = async (req, res) => {
             response: products
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -27,9 +25,7 @@ let productByName = async (req, res) => {
             });
         }
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -47,9 +43,7 @@ let productByType = async (req, res) => {
             });
         }
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
@@ -67,9 +61,7 @@ let productsByPrice = async (req, res) => {
             });
         }
     } catch (error) {
-        return res.status(500).json({
-            response: error.message
-        });
+        next(error);
     }
 };
 
