@@ -1,6 +1,6 @@
 import User from "../../models/User.js";
 
-let create = async (req, res) => {
+let create = async (req, res,next) => {
     try {
         let user = req.body;
         let newUser = await User.create(user);
@@ -9,10 +9,7 @@ let create = async (req, res) => {
             message: "Usuario creado exitosamente."
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message,
-            message: "Error al crear el usuario."
-        });
+        next(error)
     }
 };
 
@@ -25,10 +22,7 @@ let createMany = async (req, res) => {
             message: "Usuarios creados exitosamente."
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error.message,
-            message: "Error al crear los usuarios."
-        });
+        next(error)
     }
 };
 
