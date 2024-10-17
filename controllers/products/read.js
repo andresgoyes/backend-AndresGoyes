@@ -65,4 +65,25 @@ let productsByPrice = async (req, res, next) => {
     }
 };
 
-export { allProducts, productByName, productByType, productsByPrice };
+let productsByID = async (req, res, next) => {
+    try {
+        let _id = req.params._id;
+        let product = await Product.findById(_id); 
+
+        if (product) {
+            return res.status(200).json({
+                response: product
+            });
+        } else {
+            return res.status(404).json({
+                response: "No products found with this ID"
+            });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+
+export { allProducts, productByName, productByType, productsByPrice, productsByID };
