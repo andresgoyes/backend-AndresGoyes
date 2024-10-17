@@ -1,6 +1,6 @@
 import Product from "../../models/Product.js";
 
-let allProducts = async (req, res) => {
+let allProducts = async (req, res, next) => {
     try {
         let products = await Product.find();
         return res.status(200).json({
@@ -11,7 +11,7 @@ let allProducts = async (req, res) => {
     }
 };
 
-let productByName = async (req, res) => {
+let productByName = async (req, res, next) => {
     try {
         let nameQuery = req.params.name;
         let product = await Product.findOne({ name: nameQuery });
@@ -29,7 +29,7 @@ let productByName = async (req, res) => {
     }
 };
 
-let productByType = async (req, res) => {
+let productByType = async (req, res, next) => {
     try {
         let typeQuery = req.params.type;
         let products = await Product.find({ type: typeQuery });
@@ -47,7 +47,7 @@ let productByType = async (req, res) => {
     }
 };
 
-let productsByPrice = async (req, res) => {
+let productsByPrice = async (req, res, next) => {
     try {
         let priceQuery = req.params.price;
         let products = await Product.find({ price: { $lte: priceQuery } });

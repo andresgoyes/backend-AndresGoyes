@@ -1,6 +1,6 @@
 import Store from "../../models/Store.js";
 
-let create = async (req, res) => {
+let create = async (req, res, next) => {
     try {
         let store = req.body;
         let newStore = await Store.create(store);
@@ -13,7 +13,7 @@ let create = async (req, res) => {
     }
 };
 
-let createMany = async (req, res) => {
+let createMany = async (req, res, next) => {
     try {
         let stores = req.body;
         let newStores = await Store.insertMany(stores);

@@ -1,6 +1,6 @@
 import Employee from "../../models/Employee.js";
 
-let create = async (req, res) => {
+let create = async (req, res, next) => {
     try {
         let employee = req.body;
         let newEmployee = await Employee.create(employee);
@@ -13,7 +13,7 @@ let create = async (req, res) => {
     }
 };
 
-let createMany = async (req, res) => {
+let createMany = async (req, res, next) => {
     try {
         let employees = req.body;
         let allEmployees = await Employee.insertMany(employees);

@@ -1,6 +1,6 @@
 import Store from "../../models/Store.js";
 
-let allStores = async (req, res) => {
+let allStores = async (req, res, next) => {
     try {
         let stores = await Store.find();
         return res.status(200).json({
@@ -11,7 +11,7 @@ let allStores = async (req, res) => {
     }
 };
 
-let storeByAddress = async (req, res) => {
+let storeByAddress = async (req, res, next) => {
     try {
         let addressQuery = req.params.address;
         let store = await Store.findOne({ address: addressQuery });
@@ -29,7 +29,7 @@ let storeByAddress = async (req, res) => {
     }
 };
 
-let storeByName = async (req, res) => {
+let storeByName = async (req, res, next) => {
     try {
         let nameQuery = req.params.name;
         let store = await Store.findOne({ name: nameQuery });

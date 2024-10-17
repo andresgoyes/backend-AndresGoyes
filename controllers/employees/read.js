@@ -1,6 +1,6 @@
 import Employee from "../../models/Employee.js";
 
-let allEmployees = async (req, res) => {
+let allEmployees = async (req, res, next) => {
     try {
         let all = await Employee.find();
         return res.status(200).json({
@@ -11,7 +11,7 @@ let allEmployees = async (req, res) => {
     }
 };
 
-let employeeByName = async (req, res) => {
+let employeeByName = async (req, res, next) => {
     try {
         let nameQuery = req.params.name;
         
@@ -25,7 +25,7 @@ let employeeByName = async (req, res) => {
     }
 };
 
-let employeeByPosition = async (req, res) => {
+let employeeByPosition = async (req, res, next) => {
     try {
         console.log(req.params);
         let positionQuery = req.params.position;
@@ -40,7 +40,7 @@ let employeeByPosition = async (req, res) => {
     }
 };
 
-let employeeBySalary = async (req, res) => {
+let employeeBySalary = async (req, res, next) => {
     try {
         let salaryQuery = req.params.salary;
         
