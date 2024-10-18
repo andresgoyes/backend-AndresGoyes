@@ -65,25 +65,23 @@ let productsByPrice = async (req, res, next) => {
     }
 };
 
-let productsByID = async (req, res, next) => {
+let productByID = async (req, res, next) => {
     try {
-        let _id = req.params._id;
-        let product = await Product.findById(_id); 
+        let idQuery = req.params._id;
+        let product = await Product.findById(idQuery);
 
-        if (product) {
-            return res.status(200).json({
+        if (product) {            
+            return res.status(200).json({                
                 response: product
             });
-        } else {
-            return res.status(404).json({
-                response: "No products found with this ID"
+        } else {            
+            return res.status(404).json({                
+                response: "No product found with the specified ID"
             });
         }
-    } catch (error) {
-        next(error);
+    } catch (error) {        
+        next();
     }
 };
 
-
-
-export { allProducts, productByName, productByType, productsByPrice, productsByID };
+export { allProducts, productByName, productByType, productsByPrice, productByID };
