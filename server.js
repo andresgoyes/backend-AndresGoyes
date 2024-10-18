@@ -18,14 +18,6 @@ server.use(express.urlencoded({ extended: true }));
 server.use(cors());
 server.use(morgan('dev'));
 
-server.get('/', (request, response) => {
-    response.send('Hola mundo Express');
-});
-
-server.get('/saludo', (request, response) => {
-    response.send('Hola Andres Express');
-});
-
 server.use('/api', indexRouter);
 server.use(not_found_handler)
 server.use(bad_request)

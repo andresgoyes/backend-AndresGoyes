@@ -14,12 +14,17 @@ let allEmployees = async (req, res, next) => {
 let employeeByName = async (req, res, next) => {
     try {
         let nameQuery = req.params.name;
-        
-        let all = await Employee.find({ name: { $regex: nameQuery, $options: 'i' } }); // Búsqueda insensible a mayúsculas
-        
-        return res.status(200).json({
-            response: all
-        });
+        let name = await Employee.find({ name: { $regex: nameQuery, $options: 'i' } });
+
+        if (name.length > 0) {
+            return res.status(200).json({
+                response: name
+            });
+        } else {
+            return res.status(404).json({
+                response: "No employees found with the specified name"
+            });
+        }
     } catch (error) {
         next(error);
     }
@@ -27,14 +32,18 @@ let employeeByName = async (req, res, next) => {
 
 let employeeByPosition = async (req, res, next) => {
     try {
-        console.log(req.params);
         let positionQuery = req.params.position;
-        
-        let all = await Employee.find({ position: positionQuery });
-        
-        return res.status(200).json({
-            response: all
-        });
+        let position = await Employee.find({ position: { $regex: positionQuery, $options: 'i' } });
+
+        if (position.length > 0) {
+            return res.status(200).json({
+                response: position
+            });
+        } else {
+            return res.status(404).json({
+                response: "No employees found with the specified position"
+            });
+        }
     } catch (error) {
         next(error);
     }
@@ -43,15 +52,20 @@ let employeeByPosition = async (req, res, next) => {
 let employeeBySalary = async (req, res, next) => {
     try {
         let salaryQuery = req.params.salary;
-        
-        let all = await Employee.find({ salary: { $gte: salaryQuery } });
-        
-        return res.status(200).json({
-            response: all
-        });
+        let salary = await Employee.find({ salary: salaryQuery });
+
+        if (salary.length > 0) {
+            return res.status(200).json({
+                response: salary
+            });
+        } else {
+            return res.status(404).json({
+                response: "No employees found with the specified salary"
+            });
+        }
     } catch (error) {
         next(error);
     }
 };
 
-export { allEmployees, employeeByName, employeeByPosition, employeeBySalary  };
+export { allEmployees, employeeByName, employeeByPosition, employeeBySalary };

@@ -32,7 +32,13 @@ let productByName = async (req, res, next) => {
 let productByType = async (req, res, next) => {
     try {
         let typeQuery = req.params.type;
-        let products = await Product.find({ type: typeQuery });
+        let products = await Product.find({
+            type: {
+                $regex: `^${typeQuery}$`, // Coincidencia exacta
+                $options: 'i' // Ignorar mayúsculas y minúsculas
+            }
+        });
+
         if (products.length > 0) {
             return res.status(200).json({
                 response: products
@@ -50,10 +56,10 @@ let productByType = async (req, res, next) => {
 let productsByPrice = async (req, res, next) => {
     try {
         let priceQuery = req.params.price;
-        let products = await Product.find({ price: { $lte: priceQuery } });
-        if (products.length > 0) {
+        let price = await Product.find({ price: priceQuery });
+        if (price.length > 0) {
             return res.status(200).json({
-                response: products
+                response: price
             });
         } else {
             return res.status(404).json({
@@ -70,16 +76,16 @@ let productByID = async (req, res, next) => {
         let idQuery = req.params._id;
         let product = await Product.findById(idQuery);
 
-        if (product) {            
-            return res.status(200).json({                
+        if (product.length > 0) {
+            return res.status(200).json({
                 response: product
             });
-        } else {            
-            return res.status(404).json({                
+        } else {
+            return res.status(404).json({
                 response: "No product found with the specified ID"
             });
         }
-    } catch (error) {        
+    } catch (error) {
         next();
     }
 };
